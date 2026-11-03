@@ -1,401 +1,476 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ragulsanjeevan S | AI/ML Software Engineer</title>
+<meta name="description" content="Portfolio of Ragulsanjeevan S, AI/ML software engineer building Python backends, REST APIs, RAG systems and AutoML platforms.">
+<!-- Browser Tab Logo -->
+<link rel="icon" type="image/png" href="./rs-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0F16;
+    --panel:#121822;
+    --panel2:#171F2C;
+    --line:#2A3445;
+    --text:#E4EAF3;
+    --muted:#8D9AB0;
+    --green:#4ADE80;
+    --cyan:#5CC8FF;
+    --purple:#C29BFF;
+    --orange:#FFB86B;
+    --red:#FF7A85;
+    --mono:"JetBrains Mono", ui-monospace, Menlo, monospace;
+    --head:"Space Grotesk", system-ui, sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--text);font:400 16px/1.7 var(--mono);-webkit-font-smoothing:antialiased;overflow-x:hidden;
+    background-image:radial-gradient(circle at 15% 0%, rgba(92,200,255,.10), transparent 40%), radial-gradient(circle at 90% 20%, rgba(194,155,255,.09), transparent 40%)}
+  a{color:var(--cyan)}
+  :focus-visible{outline:2px solid var(--green);outline-offset:3px;border-radius:4px}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px}
+  .c-g{color:var(--green)}.c-c{color:var(--cyan)}.c-p{color:var(--purple)}.c-o{color:var(--orange)}.c-r{color:var(--red)}.c-m{color:var(--muted)}
 
-    <!-- --------- UNICONS ---------- -->
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
+  /* top bar as editor tabs */
+  header.site{position:sticky;top:0;z-index:30;background:rgba(11,15,22,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .tabs{display:flex;align-items:center;gap:4px;overflow-x:auto;scrollbar-width:none;padding:8px 0}
+  .tabs::-webkit-scrollbar{display:none}
+  .tabs .logo{font:700 16px var(--head);margin-right:14px;white-space:nowrap;color:var(--text);text-decoration:none}
+  .tabs a.t{white-space:nowrap;text-decoration:none;color:var(--muted);font-size:14px;padding:7px 13px;border-radius:8px;border:1px solid transparent}
+  .tabs a.t:hover{color:var(--text);background:var(--panel)}
+  .tabs a.t.on{color:var(--text);background:var(--panel);border-color:var(--line)}
+  .tabs .sp{flex:1}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:10px;font:600 15px var(--mono);text-decoration:none;border:1px solid var(--line);color:var(--text);background:var(--panel);transition:transform .15s,border-color .15s}
+  .btn:hover{transform:translateY(-2px);border-color:var(--green)}
+  .btn.go{background:var(--green);border-color:var(--green);color:#06210F}
+  .btn.go:hover{border-color:#fff}
+  .btn.sm{padding:8px 14px;font-size:14px}
 
-    <!-- --------- CSS ---------- -->
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="experience.css">
+  /* window chrome */
+  .win{background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
+  .win-bar{display:flex;align-items:center;gap:8px;padding:11px 14px;background:var(--panel2);border-bottom:1px solid var(--line);font-size:13px;color:var(--muted)}
+  .dot{width:11px;height:11px;border-radius:50%}
+  .d1{background:#FF5F57}.d2{background:#FEBC2E}.d3{background:#28C840}
+  .win-bar .name{margin-left:8px}
+  .win-body{padding:22px}
 
-    <!-- --------- FAVICON ---------- -->
-    <link rel="shortcut icon" href="assets/images/favicon.png" type="image/x-icon">
+  /* hero */
+  .hero{padding:56px 0 70px}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:34px;align-items:center}
+  @media(max-width:920px){.hero-grid{grid-template-columns:1fr}}
+  .eyebrow{color:var(--green);font-size:15px;margin:0 0 14px}
+  h1{font:700 clamp(38px,6vw,76px)/1 var(--head);letter-spacing:-.04em;margin:0 0 20px}
+  h1 span{background:linear-gradient(90deg,var(--cyan),var(--purple));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lede{color:var(--muted);max-width:52ch;margin:0 0 28px;font-size:16.5px}
+  .cta{display:flex;flex-wrap:wrap;gap:12px}
+  .term{font-size:14.5px;line-height:1.75;min-height:372px}
+  .term .line{white-space:pre-wrap;word-break:break-word}
+  .caret::after{content:"";display:inline-block;width:8px;height:1.05em;background:var(--green);vertical-align:-3px;margin-left:2px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .term .out{color:var(--text)}
+  .term .k{color:var(--purple)}.term .s{color:var(--orange)}.term .n{color:var(--cyan)}
 
-    <title>Ragulsanjeevan</title>
+  /* sections */
+  section{padding:84px 0;border-top:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:6px 16px;margin-bottom:34px}
+  h2{font:700 clamp(30px,4.2vw,48px)/1.05 var(--head);letter-spacing:-.03em;margin:0}
+  .path{color:var(--muted);font-size:14px}
+  @media(max-width:700px){section{padding:58px 0}}
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:26px;align-items:start}
+  @media(max-width:900px){.about-grid{grid-template-columns:1fr}}
+  .about-copy p{margin:0 0 16px;color:var(--muted);max-width:62ch}
+  .about-copy p.big{font:600 clamp(21px,2.5vw,28px)/1.3 var(--head);color:var(--text);letter-spacing:-.02em}
+  pre.json{margin:0;font:400 14.5px/1.8 var(--mono);white-space:pre-wrap;word-break:break-word}
+
+  /* experience as git log */
+  .log{display:grid;gap:22px}
+  .commit{position:relative;padding-left:30px}
+  .commit::before{content:"";position:absolute;left:7px;top:10px;bottom:-26px;width:2px;background:var(--line)}
+  .commit:last-child::before{display:none}
+  .commit::after{content:"";position:absolute;left:0;top:6px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--green)}
+  .commit.old::after{border-color:var(--purple)}
+  .hash{color:var(--orange);font-size:14px}
+  .commit h3{font:600 clamp(20px,2.3vw,26px)/1.2 var(--head);letter-spacing:-.02em;margin:6px 0 4px}
+  .meta{color:var(--muted);font-size:14px;margin-bottom:14px}
+  .commit ul.list{margin:0 0 16px;padding:0;list-style:none}
+  .commit ul.list li{position:relative;padding-left:22px;margin-bottom:9px;max-width:72ch;color:#CBD5E5}
+  .commit ul.list li::before{content:"+";position:absolute;left:0;color:var(--green);font-weight:700}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+  .chips li{font-size:13px;padding:4px 11px;border:1px solid var(--line);border-radius:6px;color:var(--cyan);background:rgba(92,200,255,.06)}
+
+  /* projects as repos */
+  .repos{display:grid;gap:22px}
+  .repo{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--panel);border:1px solid var(--line);border-radius:14px;overflow:hidden;transition:border-color .2s, transform .2s}
+  .repo:hover{border-color:var(--green);transform:translateY(-3px)}
+  .repo:nth-child(even) .viz{order:2}
+  @media(max-width:860px){.repo{grid-template-columns:1fr}.repo:nth-child(even) .viz{order:0}}
+  .repo-body{padding:clamp(20px,3vw,32px);display:flex;flex-direction:column;gap:13px}
+  .repo-body .when{color:var(--green);font-size:14px}
+  .repo-body h3{font:700 clamp(24px,3vw,34px)/1.1 var(--head);letter-spacing:-.03em;margin:0}
+  .repo-body p{margin:0;color:var(--muted)}
+  .metrics{display:flex;flex-wrap:wrap;gap:10px 26px}
+  .metrics div{font-size:13.5px;color:var(--muted)}
+  .metrics b{display:block;font:700 24px/1.15 var(--head);color:var(--text);letter-spacing:-.03em}
+  .viz{background:#0A0E14;border-right:1px solid var(--line);padding:22px;font-size:13.5px;line-height:1.8;position:relative;display:flex;flex-direction:column;justify-content:center;min-height:270px}
+  .repo:nth-child(even) .viz{border-right:0;border-left:1px solid var(--line)}
+  @media(max-width:860px){.viz{border:0!important;border-bottom:1px solid var(--line)!important}}
+  .viz .note{position:absolute;right:14px;bottom:8px;font-size:11.5px;color:var(--muted)}
+  .flow{display:grid;gap:7px}
+  .flow div{padding:8px 12px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+  .flow div::before{content:"→ ";color:var(--green)}
+  .bar{display:flex;align-items:center;gap:10px;margin:3px 0}
+  .bar i{display:block;height:10px;border-radius:5px;background:linear-gradient(90deg,var(--cyan),var(--purple))}
+  .pill{display:inline-block;font-size:12px;padding:1px 9px;border-radius:999px}
+  .p-live{background:rgba(74,222,128,.15);color:var(--green)}
+  .p-rev{background:rgba(255,184,107,.15);color:var(--orange)}
+  .p-new{background:rgba(92,200,255,.15);color:var(--cyan)}
+  .link{font-weight:700;text-decoration:none;border-bottom:2px solid var(--green);align-self:flex-start;color:var(--text)}
+  .link:hover{color:var(--green)}
+
+  /* skills */
+  .skill-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:18px}
+  .skill{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px}
+  .skill h3{font:600 14px var(--mono);margin:0 0 14px;color:var(--purple)}
+  .skill h3::before{content:"import ";color:var(--muted)}
+
+  /* education */
+  .edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+  @media(max-width:860px){.edu-grid{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:26px}
+  .card h3{font:600 22px/1.2 var(--head);letter-spacing:-.02em;margin:0 0 10px}
+  .card p{margin:0 0 4px;color:var(--muted)}
+  .grade{display:inline-block;margin-top:14px;color:var(--green);border:1px solid var(--green);border-radius:6px;padding:3px 12px;font-weight:700}
+  .cert{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:12px 0;border-bottom:1px dashed var(--line)}
+  .cert:last-child{border:0}
+  .cert span{color:var(--muted);font-size:14px}
+
+  /* contact */
+  .contact h2{font-size:clamp(38px,7vw,88px);line-height:.98;letter-spacing:-.045em;margin-bottom:28px}
+  .mail{display:inline-block;font:700 clamp(18px,3vw,32px)/1.2 var(--head);color:var(--green);text-decoration:none;border-bottom:3px solid var(--green);margin-bottom:30px;word-break:break-all}
+  .mail:hover{color:#fff;border-color:#fff}
+  .social{display:flex;flex-wrap:wrap;gap:12px}
+  footer{padding:26px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto}
+    *{animation:none!important;transition:none!important}
+  }
+</style>
 </head>
 <body>
-   <div class="container">
-    <!-- --------------- HEADER --------------- -->
-      <nav id="header">
-        <div class="nav-logo">
-            <p class="nav-name">Ragul</p>
-            <span>.</span>
-        </div>
-        <div class="nav-menu" id="myNavMenu">
-            <ul class="nav_menu_list">
-                <li class="nav_list">
-                    <a href="#home" class="nav-link active-link">Home</a>
-                    <div class="circle"></div>
-                </li>
-                <li class="nav_list">
-                    <a href="#about" class="nav-link">About</a>
-                    <div class="circle"></div>
-                </li>
-                <li class="nav_list">
-                    <a href="#education" class="nav-link">Education</a>
-                    <div class="circle"></div>
-                </li>
-                <li class="nav_list">
-                    <a href="#experience" class="nav-link">Experience</a>
-                    <div class="circle"></div>
-                </li>
-                <li class="nav_list">
-                    <a href="#projects" class="nav-link">Projects</a>
-                    <div class="circle"></div>
-                </li>
-                <li class="nav_list">
-                    <a href="#Achievements" class="nav-link">Achievements</a>
-                    <div class="circle"></div>
-                </li>
-                <li class="nav_list">
-                    <a href="#contact" class="nav-link">Contact</a>
-                    <div class="circle"></div>
-                </li>
-            </ul>
-        </div>
-        <div class="nav-button">
-            <a href="RESUME-RAGULSANJEEVAN.pdf"><button class="btn">Download CV <i class="uil uil-file-alt"></i></button></a>
-        </div>
-        <div class="nav-menu-btn">
-            <i class="uil uil-bars" onclick="myMenuFunction()"></i>
-        </div>
-      </nav>
 
+<header class="site">
+  <div class="wrap">
+    <nav class="tabs" aria-label="Primary">
+      <a class="logo" href="#top">~/ragul</a>
+      <a class="t" href="#about" data-s="about">about.py</a>
+      <a class="t" href="#experience" data-s="experience">experience.log</a>
+      <a class="t" href="#projects" data-s="projects">projects/</a>
+      <a class="t" href="#skills" data-s="skills">skills.json</a>
+      <a class="t" href="#education" data-s="education">education.md</a>
+      <span class="sp"></span>
+      <a class="btn go sm" href="#contact">hire_me()</a>
+    </nav>
+  </div>
+</header>
 
-    <!-- -------------- MAIN ---------------- -->
-    <main class="wrapper">
-       <!-- -------------- FEATURED BOX ---------------- -->
-       <section class="featured-box" id="home">
-          <div class="featured-text">
-            <div class="featured-text-card">
-                <span>Hi</span>
-            </div>
-            <div class="featured-name">
-                <p>I'm <span class="typedText"></span></p>
-            </div>
-            <div class="featured-text-info">
-                <p>Launching my career in software development with innovation, passion,<br> and a commitment to excellence.
-                </p>
-            </div>
-            <div class="featured-text-btn">
-                <button class="btn blue-btn">Hire Me</button>
-                <a href="RESUME-RAGULSANJEEVAN.pdf"><button class="btn">Download CV <i class="uil uil-file-alt"></i></button></a>
-            </div>
-            <div class="social_icons">
-                <div class="icon"><i class="uil uil-instagram"></i></div>
-            <div class="icon"><a href="https://www.linkedin.com/in/ragulsanjeevan-s-69b62b201/"><i class="uil uil-linkedin-alt"></i></a></div>
-            <div class="icon"><i class="uil uil-dribbble"></i></div>
-            <div class="icon"><a href=" https://github.com/RAGULSANJEEVAN"><i class="uil uil-github-alt"></i></a></div>
-            </div>
-          </div>
-          <div class="featured-image">
-            <div class="image">
-                <img src="image.png" alt="avatar">
-            </div>
-          </div>
-          <div class="scroll-icon-box">
-            <a href="#about" class="scroll-btn">
-                <i class="uil uil-mouse-alt"></i>
-                <p>Scroll Down</p>
-            </a>
-          </div>
-
-       </section>
-       <!-- -------------- ABOUT BOX ---------------- -->
-       <section class="section" id="about">
-          <div class="top-header">
-            <h1>About Me</h1>
-          </div>
-          <div class="row">
-            <div class="col">
-                <div class="about-info">
-                    <h3>My introduction</h3>
-                    <p>A dedicated software developer specializing in Artificial Intelligence and Machine Learning. With a strong academic background and hands-on experience, I excel in optimizing performance and creating impactful solutions. Certified by AWS Academy and proficient in various programming languages, I'm eager to contribute my skills to innovative projects. Explore my portfolio to learn more about my work.
-                    </p>
-                    
-                </div>
-            </div>
-            <div class="col">
-                <div class="skills-box">
-                    <div class="skills-header">
-                        <h3>Frontend</h3>
-                    </div>
-                    <div class="skills-list">
-                        <span>HTML</span>
-                        <span>CSS</span>
-                        <span>Bootstrap</span>
-                        <span>JavaScript</span>
-                        <span>Vue</span>
-                        <span>React</span>
-                        <span>Angular</span>
-                    </div>
-                </div>
-                <div class="skills-box">
-                    <div class="skills-header">
-                        <h3>Backend</h3>
-                    </div>
-                    <div class="skills-list">
-                        <span>PHP</span>
-                        <span>JAVA</span>
-                        <span>Python</span>
-                        <span>C++</span>
-                    </div>
-                </div>
-                <div class="skills-box">
-                    <div class="skills-header">
-                        <h3>Database</h3>
-                    </div>
-                    <div class="skills-list">
-                        <span>MySQL</span>
-                        <span>PostgreSQL</span>
-                        <span>MongoDB</span>
-                    </div>
-                </div>
-            </div>
-          </div>
-       </section>
-       <!-- -------------- EDUCATION BOX ---------------- -->
-       <section class="section" id = "education">
-        <div class="top-header">
-            <h1>Education</h1>
-            <div class="row1">
-                <div class="col2">
-                    <div class="education-info">
-                        <h3>Sri Ramachandra Faculty of Engineering and Technology</h3>
-                        <p>B.Tech in CSE Artificial Intelligence and Machine learning</p>
-                        <p class="education-year">2020-2024</p>
-                        <p class="education-cgpa">CGPA : 8.15</p>
-                    </div>
-                    <div class="education-info" id="education-2">
-                        <h3>Green Graden Matric Hr Sec School</h3>
-                        <p>XII - State Board</p>
-                        <p class="education-year">2019-2020</p>
-                        <p class="education-cgpa">Percentage : 75%</p>
-                    </div>
-            </div>
-            
+<main id="top">
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <p class="eyebrow">&gt; hello, world</p>
+        <h1>I'm Ragul. I build <span>AI & Software features</span> that ship.</h1>
+        <p class="lede">AI/ML software engineer at Tata Communications. I write the Python backends, REST APIs and retrieval pipelines that put language models and machine learning to work inside enterprise software.</p>
+        <div class="cta">
+          <a class="btn go" href="#projects">View projects</a>
+          <!-- TODO: add RESUME-RAGULSANJEEVAN.pdf next to this file -->
+          <a class="btn" href="https://drive.google.com/file/d/1KNdfQFXSDwOuYm8pvXRXcYNad5JADjuL/view?usp=sharing" download>Download resume</a>
         </div>
-        
-        </div>
-       </section>
-       <!-- -------------- EDUCATION BOX END ---------------- -->
-       <!-- -------------- Experience BOX END ---------------- -->
-       <section class="section" id = "experience">
-        <div class="top-header">
-            <h1>Internship Expreience</h1>
-            <div class="row2">
-                <div class="col2">
-                    <div class="timeline">
-                        <div class="outer">
-                          <div class="card">
-                            <div class="info">
-                              <h3 class="title">CRM - ACCOUNT MANAGEMENT </h3>
-                              <p class="role">Intern at Ausweg Automation </p>
-                              <ul class="details">
-                                <li>Designed and implemented a fully functional CRM system utilizing HTML, CSS, and PHP.</li>
-                                <li>Designed intuitive user interface with customer data collection forms and tables for seamless customer
-                                    information display.</li>
-                                <li>Perfect PHP scripts for database operations, resulting in a 38% reduction in page load times and enhanced
-                                    overall system performance.
-                                </li>
-                                <li>Resulting in a 40% reduction in manual data entry time and increase customer data management efficiency.</li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="card">
-                            <div class="info">
-                              <h3 class="title">COLLEGE WEBSITE</h3>
-                              <p class="role">Intern at Sri Ramachandra University - ICET</p>
-                              <ul class="details">
-                                <li>Developed and implemented a responsive college website using HTML, CSS, and JavaScript.</li>
-                                <li>Enhanced user experience resulting in a 40% increase in website traffic and a 25% increase in online
-                                    applications.
-                                    </li>
-                                <li>Improved website performance to achieve a loading time of under 2 seconds, leading to a 20% improvement
-                                    in user satisfaction and providing a seamless browsing experience.
-                                </li>
-                                <li> Ensured cross-browser compatibility (Chrome, Firefox, Safari, and Edge), resulting in a consistent user
-                                    experience across different browsers, reflected in a 98% compatibility score.</li>
-                              </ul>
-                            </div>
-                          </div>
-                          <div class="card">
-                            <div class="info">
-                              <h3 class="title">E-BOOK APP - LIBON.</h3>
-                              <p class="role">Intern at Vlog Innovations</p>
-                              <ul class="details">
-                                <li>Developed an E-Book app named Libon created using Android Studio and Kotlin.</li>
-                                <li> The app is designed to have a user-friendly interface that makes it easy for readers to access their favorite e-books.
-                                    </li>
-                                <li> I had incorporated features such as bookmarking, highlighting, and downloading books from an online library.</li>
-                              </ul>
-                            </div>
-                          </div>
-                        
-                        </div>
-                      </div>
-                </div>
-            </div>
-           
-        </div>
-        </section>
-       <!-- -------------- PROJECT BOX ---------------- -->
+      </div>
 
-       <section class="section" id="projects">
-          <div class="top-header">
-              <h1>Projects</h1>
-          </div>
-          <div class="project-container">
-            <div class="project-box">
-                <img src="firefighter.jpg" alt="">
-                <h4>Automatic Fire Extinguishing Robot</h4>
-                <label>IOT Projects</label>
-                <a href="https://drive.google.com/drive/folders/1ZgUK4D6bRpWtmChOpqpCHU_Xr4pbBASG?usp=sharing" class="project-link">Read More</a>
-            </div>
-            <div class="project-box">
-                <img src="data-analytics.jpg" alt="">
-                <h4>Life Expectancy Dataset Analysis</h4>
-                <label>Data Analytics Projects</label>
-                <a href="https://github.com/RAGULSANJEEVAN/Life-expectancy" class="project-link">Read More</a>
-            </div>
-            <div class="project-box">
-                <img src="ml.jpg" alt="">
-                <h4>Weather Prediction System</h4>
-                <label>Machine Learning Projects</label>
-                <a href="https://github.com/RAGULSANJEEVAN/WEATHER-PREDICTION-SYSTEM" class="project-link">Read More</a>
-            </div>
-            <div class="project-box">
-                <img src="powerbi.jpg" alt="">
-                <h4>Cricket Analysis </h4>
-                <label>Power Bi Dashboard Creation</label>
-                <a href="https://drive.google.com/file/d/1eM9_L27XM2fBildeWU2AJBaiL3bU9XHD/view?usp=sharing" class="project-link">Read More</a>
-            </div>
-            <div class="project-box">
-                <img src="web.jpg" alt="">
-                <h4>Ecommerce React Application.</h4>
-                <label>Web Development Projects</label>
-                <a href="#" class="project-link">Read More</a>
-            </div>
-            <div class="project-box">
-                <img src="app.jpg" alt="">
-                <h4>CodeRed Android Application.</h4>
-                <label>Mobile App Development Projects</label>
-                <a href="https://drive.google.com/file/d/1DplEGMZdssCnB8EhqrVkQMMEkTXmTZdI/view?usp=sharing" class="project-link">Read More</a>
-                </div>
-          </div>
-       </section>
-       <!-- -------------- ACHIEVEMENTS BOX ---------------- -->
-       <section class="section" id="Achievements">
-        <div class="top-header">
-            <h1>Achievements</h1>
-        </div>
-        <div class="project-container">
-            <div class="project-box">
-                <img src="GuviCertification - face.png" alt="">
-            </div>
-            <div class="project-box">
-                <img src="GuviCertification - python.png" alt="">
-            </div>
-            <div class="project-box">
-                <img src="udemy_frontend.jpg" alt="">
-            </div>
-            <div class="project-box">
-                <img src="udemt_full.jpg" alt="">
-            </div>
-            <div class="project-box">
-                <img src="ideathon.jpeg" alt="">
-            </div>
-            <div class="project-box">
-                <img src="srm.jpg" alt="">
-            </div>
-        </section>
-       <!-- -------------- CONTACT BOX ---------------- -->
-
-       <section class="section" id="contact">
-          <div class="top-header">
-            <h1>Get in touch</h1>
-            <span>Do you have a project in your mind, contact me here</span>
-          </div>
-          <div class="row">
-             <div class="col">
-                <div class="contact-info">
-                    <h2>Find Me <i class="uil uil-corner-right-down"></i></h2>
-                    <p><i class="uil uil-envelope"></i> Email: ragulsanjeevan0911@gmail.com</p>
-                    <p><i class="uil uil-phone"></i> Tel: +91 6374633137</p>
-                </div>
-             </div>
-             <div class="col">
-                <form >
-                <div class="form-control">
-                    <div class="form-inputs">
-                        <input type="text" class="input-field" id="con-name" placeholder="Name">
-                        <input type="text" class="input-field" id="con-email" placeholder="Email">
-                    </div>
-                    <div class="text-area">
-                        <textarea placeholder="Message" id="con-message"></textarea>
-                    </div>
-                    <div class="form-button">
-                        <button class="btn" id="con-btn">Send <i class="uil uil-message"></i></button>
-                    </div>
-                </div>
-            </form>
-             </div>
-          </div>
-       </section>
-
-    </main>
-
-
-    <!-- --------------- FOOTER --------------- -->
-    <footer>
-        <div class="top-footer">
-            <p>Ragulsanjeevan S .</p>
-        </div>
-        <div class="footer-social-icons">
-            <div class="icon"><i class="uil uil-instagram"></i></div>
-            <div class="icon"><a href="https://www.linkedin.com/in/ragulsanjeevan-s-69b62b201/"><i class="uil uil-linkedin-alt"></i></a></div>
-            <div class="icon"><i class="uil uil-dribbble"></i></div>
-            <div class="icon"><a href=" https://github.com/RAGULSANJEEVAN"><i class="uil uil-github-alt"></i></a></div>
-        </div>
-        <div class="bottom-footer">
-            <p>Copyright &copy; <a href="#home" style="text-decoration: none;">Ragul</a> - All rights reserved</p>
-        </div>
-    </footer>
-
+      <div class="win" aria-label="Terminal showing a short summary">
+        <div class="win-bar"><span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span><span class="name">ragul@portfolio: ~</span></div>
+        <div class="win-body term" id="term" aria-live="off"></div>
+      </div>
     </div>
+  </div>
 
-    <!-- ----- TYPING JS Link ----- -->
-    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="sec-head"><h2>About me</h2><span class="path">// about.py</span></div>
+      <div class="about-grid">
+        <div class="about-copy">
+          <p class="big">I turn machine learning and language models into reliable features that real teams use every day.</p>
+          <p>I studied AI and Machine Learning at Sri Ramachandra and now work at Tata Communications, building the backend services, APIs and AI integrations behind enterprise applications.</p>
+          <p>My work covers the whole path: preparing data, evaluating models honestly, wrapping them in clean FastAPI services, and running language models locally so company documents never leave the network.</p>
+        </div>
+        <div class="win">
+          <div class="win-bar"><span class="dot d1"></span><span class="dot d2"></span><span class="dot d3"></span><span class="name">impact.json</span></div>
+          <div class="win-body"><pre class="json">{
+  <span class="c-c">"rest_apis_built"</span>: <span class="c-o">"150+"</span>,
+  <span class="c-c">"services"</span>: <span class="c-o">8</span>,
+  <span class="c-c">"projects_on_platform"</span>: <span class="c-o">"300+"</span>,
+  <span class="c-c">"documents_indexed"</span>: <span class="c-o">"1,000+"</span>,
+  <span class="c-c">"retrieval_accuracy"</span>: <span class="c-g">"~90%"</span>,
+  <span class="c-c">"base"</span>: <span class="c-g">"Chennai, India"</span>
+}</pre></div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-       <!-- ----- SCROLL REVEAL JS Link----- -->
-    <script src="https://unpkg.com/scrollreveal"></script>
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap">
+      <div class="sec-head"><h2>Experience</h2><span class="path">$ git log --career</span></div>
+      <div class="log">
+        <article class="commit">
+          <span class="hash">HEAD · Sep 2024 to Oct 2026</span>
+          <h3>Software Engineer, Enterprise Applications Development</h3>
+          <div class="meta">Relevantz Technology Services (TCL- Client)</div>
+          <ul class="list">
+            <li> Designed, developed, and maintained scalable full-stack applications using Python, REST APIs,microservices architecture, and Angular, following SDLC best practices across requirements gathering,
+              development, testing, deployment and integrating 100+ APIs across 8 services.</li>
+            <li>Integrated 150+ REST APIs across 8 services, covering request and response handling, data exchange and workflow operations.</li>
+            <li>Delivered a central application onboarding platform managing 300+ projects, with registration, assignment, tracking and lifecycle monitoring.</li>
+            <li> Developed 20+ Angular screens for dashboards, reporting, administration, and workflow management, integrating data from multiple backend services.</li>
+            <li>Work in Git-based workflows: feature development, debugging, integration, testing and production enhancements.</li>
+          </ul>
+          <ul class="chips"><li>Python</li><li>FastAPI</li><li>Flask</li><li>PostgreSQL</li><li>MySQL</li><li>Microservices</li><li>Angular</li><li>Git</li></ul>
+        </article>
+        <article class="commit old">
+          <span class="hash">Mar 2024 to Sep 2024</span>
+          <h3>Intern, Build a self-hosted LLM AI model</h3>
+          <div class="meta">Tata Communications Limited, Chennai</div>
+          <ul class="list">
+            <li>Built a self-hosted enterprise AI application with Flask, LLaMA2 and Ollama to answer questions about internal policy documents.</li>
+            <li>Built an end-to-end RAG pipeline: document ingestion, text processing, retrieval, prompt generation and grounded responses.</li>
+            <li>Indexed 1,000+ enterprise documents and reached about 90% retrieval accuracy on evaluated policy queries.</li>
+            <li>Served the system through Flask REST APIs with local LLM inference, so no external LLM APIs were needed.</li>
+          </ul>
+          <ul class="chips"><li>Flask</li><li>LLaMA2</li><li>Ollama</li><li>RAG</li><li>Prompt engineering</li><li>NLP</li></ul>
+        </article>
+      </div>
+    </div>
+  </section>
 
-    <!-- ----- MAIN JS ----- -->
-    <script src="main.js"></script>
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap">
+      <div class="sec-head"><h2>Selected work</h2><span class="path">// projects/</span></div>
+      <div class="repos">
 
-    <script src="https://smtpjs.com/v3/smtp.js"></script>
+        <article class="repo">
+          <div class="viz">
+            <div class="flow">
+              <div>upload dataset</div><div>analyse and clean</div><div>train and compare models</div><div>Qwen3 writes the report</div>
+            </div>
+            <span class="note">simplified illustration</span>
+          </div>
+          <div class="repo-body">
+            <div class="when">Jul 2026 to Aug 2026</div>
+            <h3>AutoML Studio</h3>
+            <p>An AI-powered platform that takes a dataset through analysis, preprocessing, model selection, training, evaluation and prediction. FastAPI endpoints connect an Angular frontend to the pipeline, and Qwen3 on Ollama writes executive summaries and downloadable reports.</p>
+            <div class="metrics"><div><b>100+</b>datasets</div><div><b>~80%</b>less manual prep</div><div><b>50 to 55%</b>faster runs</div></div>
+            <ul class="chips"><li>FastAPI</li><li>Pandas</li><li>Scikit-learn</li><li>Ollama</li><li>Angular</li></ul>
+            <!-- TODO: replace with the AutoML Studio repo or demo link -->
+            <a class="link" href="https://github.com/RAGULSANJEEVAN/automl-framework">View on GitHub ↗</a>
+          </div>
+        </article>
 
-    <script>
-        var bttn = document.getElementById("con-btn");
-        bttn.addEventListener('click', function(e){
-            e.preventDefault()
-            var name = document.getElementById('con-name').value;
-            var email = document.getElementById('con-email').value;
-            var message = document.getElementById('con-message').value;
-            var body = 'name: '+name + '<br/> email :'+email + '<br/> message :'+ message;
-                        Email.send({
-                    SecureToken : "d241f81b-6d24-4a06-b470-dc62442360c3",
-                    To : 'ragulsanjeevan0911@gmail.com',
-                    From : "ragulsanjeevan8925@gmail.com",
-                    Subject: "",
-                    Body : body
-                }).then(
-                message => alert(message)
-                );
-                })
-    </script>
+        <article class="repo">
+          <div class="viz">
+            <div class="flow">
+              <div>policy documents</div><div>split into chunks</div><div>retrieve best passages</div><div>LLaMA2 answers from them</div>
+            </div>
+            <span class="note">simplified illustration</span>
+          </div>
+          <div class="repo-body">
+            <div class="when">2024, Tata Communications</div>
+            <h3>Self-hosted policy assistant</h3>
+            <p>A private question-answering app that searches internal policy documents and writes grounded answers with a local LLaMA2 model. Nothing is sent to an external AI API.</p>
+            <div class="metrics"><div><b>1,000+</b>documents</div><div><b>~90%</b>retrieval accuracy</div></div>
+            <ul class="chips"><li>Flask</li><li>LLaMA2</li><li>Ollama</li><li>RAG</li></ul>
+          </div>
+        </article>
+
+        <article class="repo">
+          <div class="viz">
+            <div>
+              <div class="bar"><span class="c-m" style="width:110px">Billing</span><span class="pill p-live">live</span></div>
+              <div class="bar"><span class="c-m" style="width:110px">Assets</span><span class="pill p-rev">review</span></div>
+              <div class="bar"><span class="c-m" style="width:110px">Reports</span><span class="pill p-new">new</span></div>
+            </div>
+            <span class="note">sample rows, simplified illustration</span>
+          </div>
+          <div class="repo-body">
+            <div class="when">Enterprise platform, Tata Communications</div>
+            <h3>Application onboarding platform</h3>
+            <p>A central place to register, assign, track and monitor applications through their lifecycle, running on FastAPI services backed by PostgreSQL and MySQL.</p>
+            <div class="metrics"><div><b>300+</b>projects</div><div><b>150+</b>APIs, 8 services</div></div>
+            <ul class="chips"><li>FastAPI</li><li>SQL</li><li>Microservices</li><li>Angular</li></ul>
+          </div>
+        </article>
+
+        <article class="repo">
+          <div class="viz">
+            <div>
+              <div class="bar"><i style="width:30%"></i></div>
+              <div class="bar"><i style="width:46%"></i></div>
+              <div class="bar"><i style="width:64%"></i></div>
+              <div class="bar"><i style="width:82%"></i></div>
+              <div class="bar"><i style="width:96%"></i></div>
+            </div>
+            <span class="note">illustration, not real data</span>
+          </div>
+          <div class="repo-body">
+            <div class="when">Aug 2021</div>
+            <h3>Life expectancy dataset analysis</h3>
+            <p>A Tableau analysis of global life expectancy trends, looking at how socioeconomic, health and demographic indicators explain differences between countries and regions.</p>
+            <ul class="chips"><li>Tableau</li><li>Data analysis</li></ul>
+            <a class="link" href="https://github.com/RAGULSANJEEVAN/Life-expectancy">View project ↗</a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap">
+      <div class="sec-head"><h2>Skills</h2><span class="path">// skills.json</span></div>
+      <div class="skill-grid">
+        <div class="skill"><h3>machine_learning</h3>
+          <ul class="chips"><li>Scikit-learn</li><li>TensorFlow</li><li>Feature engineering</li><li>Model selection</li><li>Hyperparameter tuning</li><li>Supervised learning</li><li>Unsupervised learning</li></ul></div>
+        <div class="skill"><h3>generative_ai</h3>
+          <ul class="chips"><li>LLM applications</li><li>RAG</li><li>Prompt engineering</li><li>Ollama</li><li>LLaMA2</li><li>Qwen3</li><li>LangChain</li><li>LangGraph</li><li>AI agents</li></ul></div>
+        <div class="skill"><h3>model_evaluation</h3>
+          <ul class="chips"><li>Accuracy</li><li>Precision</li><li>Recall</li><li>F1-score</li><li>R²</li><li>RMSE</li><li>MAE</li></ul></div>
+        <div class="skill"><h3>backend_apis</h3>
+          <ul class="chips"><li>Python</li><li>FastAPI</li><li>Flask</li><li>REST APIs</li><li>Microservices</li><li>Async processing</li><li>SQL</li></ul></div>
+        <div class="skill"><h3>data_databases</h3>
+          <ul class="chips"><li>Pandas</li><li>NumPy</li><li>PostgreSQL</li><li>MySQL</li><li>Tableau</li></ul></div>
+        <div class="skill"><h3>frontend_tools</h3>
+          <ul class="chips"><li>Angular</li><li>TypeScript</li><li>JavaScript</li><li>HTML5</li><li>CSS3</li><li>Bootstrap</li><li>PrimeNG</li><li>Highcharts</li><li>Git</li></ul></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="wrap">
+      <div class="sec-head"><h2>Education</h2><span class="path">// education.md</span></div>
+      <div class="edu-grid">
+        <div class="card">
+          <h3>B.Tech, CSE (Artificial Intelligence and Machine Learning)</h3>
+          <p>Sri Ramachandra Faculty of Engineering and Technology, Chennai</p>
+          <p>2020 to 2024</p>
+          <span class="grade">CGPA 8.25</span>
+        </div>
+        <div class="card">
+          <h3>Certifications</h3>
+          <div class="cert">Full Stack Development Program <span>Udemy, Jul 2021</span></div>
+          <div class="cert">Front End Web Development Bootcamp <span>Udemy, May 2021</span></div>
+          <div class="cert">Face Recognition with Python <span>Guvi, Oct 2021</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <div class="sec-head"><span class="path">$ ./contact.sh</span></div>
+      <h2>Let's build something.</h2>
+      <a class="mail" href="mailto:ragulsanjeevans@gmail.com">ragulsanjeevans@gmail.com</a>
+      <div class="social">
+        <a class="btn" href="https://www.linkedin.com/in/ragulsanjeevan-s-69b62b201/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://github.com/RAGULSANJEEVAN" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="tel:+916374633137">+91 63746 33137</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© <span id="yr">2026</span> Ragulsanjeevan S</span><a href="#top">Back to top</a></div>
+</footer>
+
+<script>
+(function(){
+  document.getElementById('yr').textContent = new Date().getFullYear();
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* active tab while scrolling */
+  var tabs = [].slice.call(document.querySelectorAll('.tabs a.t'));
+  if('IntersectionObserver' in window){
+    var io = new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(e.isIntersecting){
+          tabs.forEach(function(t){ t.classList.toggle('on', t.dataset.s === e.target.id); });
+        }
+      });
+    }, {rootMargin:'-45% 0px -50% 0px'});
+    ['about','experience','projects','skills','education'].forEach(function(id){
+      var el = document.getElementById(id); if(el) io.observe(el);
+    });
+  }
+
+  /* typing terminal */
+  var term = document.getElementById('term');
+  var script = [
+    {cmd:'whoami', out:'<span class="c-g">Ragulsanjeevan S</span> · AI/ML software engineer'},
+    {cmd:'cat stack.txt', out:'<span class="k">python</span> · <span class="k">fastapi</span> · <span class="k">rag</span> · <span class="k">ollama</span> · <span class="k">scikit-learn</span> · <span class="k">postgres</span>'},
+    {cmd:'ls impact/', out:'<span class="n">150+</span> REST APIs   <span class="n">300+</span> projects tracked\n<span class="n">1,000+</span> docs indexed   <span class="n">~90%</span> retrieval accuracy'},
+    {cmd:'git log -1 --oneline', out:'<span class="c-o">a1b2c3d</span> Software Engineer @ Tata Communications'},
+    {cmd:'echo $STATUS', out:'<span class="s">"open to AI/ML || Software Engineer roles"</span>'}
+  ];
+  var esc = function(s){ return s; };
+
+  function addLine(html, cls){
+    var d = document.createElement('div'); d.className = 'line ' + (cls||''); d.innerHTML = html; term.appendChild(d); return d;
+  }
+  function renderStatic(){
+    term.innerHTML = '';
+    script.forEach(function(s){
+      addLine('<span class="c-g">$</span> ' + s.cmd);
+      addLine(s.out, 'out');
+    });
+    var last = addLine('<span class="c-g">$</span> ', 'caret');
+  }
+  if(reduce){ renderStatic(); return; }
+
+  var step = 0;
+  function nextCmd(){
+    if(step >= script.length){
+      addLine('<span class="c-g">$</span> ', 'caret'); return;
+    }
+    var s = script[step++];
+    var row = addLine('<span class="c-g">$</span> <span class="typed"></span>', 'caret');
+    var typed = row.querySelector('.typed'), i = 0;
+    (function type(){
+      typed.textContent = s.cmd.slice(0, ++i);
+      if(i < s.cmd.length){ setTimeout(type, 55); }
+      else{
+        row.classList.remove('caret');
+        setTimeout(function(){
+          addLine(s.out, 'out');
+          setTimeout(nextCmd, 520);
+        }, 260);
+      }
+    })();
+  }
+  setTimeout(nextCmd, 500);
+})();
+</script>
 </body>
 </html>
